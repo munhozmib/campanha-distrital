@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Pesquisa Zaqueu Engraxate · DF 2026</title>
+  <meta name="description" content="Distrital DF 2026 – queremos ouvir você! Campanha limpa é economia, sustentabilidade e inovação." />
+  <meta name="theme-color" content="#C8102E" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:       #C8102E;
+      --red-dark:  #9b0c22;
+      --red-light: #e8294a;
+      --gold:      #FFB81C;
+      --gold-dark: #d49a14;
+      --bg:        #0d0d14;
+      --bg2:       #15151f;
+      --card:      #1c1c2a;
+      --card2:     #232336;
+      --border:    rgba(255,255,255,0.08);
+      --text:      #f0f0f5;
+      --text-muted:#9898b0;
+      --white:     #ffffff;
+      --radius:    16px;
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100dvh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== PROGRESS BAR ===== */
+    #progress-wrap {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+    }
+    #progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+      width: 0%;
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ===== HEADER ===== */
+    #header {
+      position: fixed;
+      top: 4px; left: 0; right: 0;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: rgba(13,13,20,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    #header-logo {
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+    #header-logo span { color: var(--gold); }
+    #header-step {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== MAIN STAGE ===== */
+    #stage {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding-top: 68px; /* header height */
+      padding-bottom: 100px; /* nav height */
+      min-height: 100dvh;
+      position: relative;
+    }
+
+    /* ===== SCREENS ===== */
+    .screen {
+      position: absolute;
+      inset: 68px 0 0 0;
+      padding: 24px 20px 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity var(--transition), transform var(--transition);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .screen.active {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+    .screen.exit-left {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+
+    .screen-inner {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    /* ===== INTRO SCREEN ===== */
+    #screen-0 {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,16,46,0.25) 0%, transparent 70%),
+        var(--bg);
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .intro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(200,16,46,0.15);
+      border: 1px solid rgba(200,16,46,0.35);
+      color: #f27688;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .intro-badge::before { content: '🗳️'; }
+    .intro-title {
+      font-size: clamp(1.7rem, 7vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .intro-title .highlight { color: var(--gold); }
+    .intro-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 380px;
+      margin: 0 auto 36px;
+    }
+    .btn-start {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--red), var(--red-light));
+      color: var(--white);
+      font-size: 1.05rem;
+      font-weight: 800;
+      padding: 16px 40px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      box-shadow: 0 8px 32px rgba(200,16,46,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-start:hover, .btn-start:active {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(200,16,46,0.55);
+    }
+    .btn-start::after { content: '→'; font-size: 1.1em; }
+    .intro-decoration {
+      position: absolute;
+      bottom: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      opacity: 0.3;
+    }
+    .intro-decoration span {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .intro-decoration span:nth-child(2) { background: var(--red); }
+
+    /* ===== QUESTION SCREENS ===== */
+    .q-number {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red-light);
+      margin-bottom: 10px;
+    }
+    .q-title {
+      font-size: clamp(1.2rem, 5vw, 1.6rem);
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .q-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 24px;
+      background: rgba(255,184,28,0.07);
+      border-left: 3px solid var(--gold);
+      padding: 10px 14px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* ===== OPTIONS ===== */
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .option:hover { border-color: rgba(200,16,46,0.4); background: var(--card2); }
+    .option:active { transform: scale(0.985); }
+    .option.selected {
+      border-color: var(--red);
+      background: rgba(200,16,46,0.12);
+    }
+    .option.selected .option-dot {
+      background: var(--red);
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(200,16,46,0.25);
+    }
+    .option.selected .option-dot::after { opacity: 1; transform: scale(1); }
+    .option-dot {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .option-dot::after {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: white;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.2s;
+    }
+    .option-label {
+      font-size: 0.96rem;
+      font-weight: 500;
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    /* ===== CHECKBOX OPTIONS (redes sociais) ===== */
+    .option.checkbox .option-dot {
+      border-radius: 6px;
+    }
+    .option.checkbox.selected .option-dot {
+      background: var(--red);
+      border-color: var(--red);
+    }
+    .option.checkbox.selected .option-dot::after {
+      content: '✓';
+      font-size: 11px;
+      font-weight: 900;
+      width: auto; height: auto;
+      background: transparent;
+      color: white;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ===== SOCIAL NETWORKS GRID ===== */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+    }
+    .options-grid .option { flex-direction: column; text-align: center; padding: 16px 12px; gap: 8px; }
+    .options-grid .option .option-dot { margin: 0 auto; }
+    .options-grid .option .net-icon { font-size: 1.6rem; line-height: 1; }
+    .options-grid .option .option-label { font-size: 0.82rem; font-weight: 600; }
+
+    /* ===== INPUT FIELDS ===== */
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+      margin-bottom: 16px;
+    }
+    .input-group label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .input-group input {
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 1rem;
+      font-family: inherit;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .input-group input:focus { border-color: var(--red); }
+    .input-group input::placeholder { color: var(--text-muted); }
+    .phone-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .phone-wrap:focus-within { border-color: var(--red); }
+    .phone-flag {
+      padding: 14px 12px 14px 16px;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      border-right: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .phone-wrap input {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 14px 16px;
+      flex: 1;
+    }
+    .phone-wrap input:focus { border: none; }
+    .optional-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    /* ===== THANK YOU SCREEN ===== */
+    #screen-9 {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,16,46,0.2) 0%, transparent 70%),
+        var(--bg);
+      text-align: center;
+    }
+    .thanks-icon {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .thanks-title {
+      font-size: clamp(1.6rem, 6vw, 2.2rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+    .thanks-sub {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      max-width: 380px;
+      margin: 0 auto 32px;
+    }
+    .results-section {
+      width: 100%;
+      max-width: 560px;
+      text-align: left;
+    }
+    .results-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .results-title::before { content: '📊'; }
+    .result-q {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .result-q-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .result-bar-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .result-bar-item {}
+    .result-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .result-bar-label .pct { color: var(--gold); }
+    .result-bar-track {
+      height: 8px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .result-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+      border-radius: 999px;
+      width: 0%;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .result-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      padding: 24px;
+    }
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-top-color: var(--red);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ===== BOTTOM NAV ===== */
+    #bottom-nav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 12px 20px 20px;
+      background: linear-gradient(0deg, var(--bg) 60%, transparent);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    #btn-next {
+      width: 100%;
+      max-width: 480px;
+      padding: 16px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      background: linear-gradient(135deg, var(--red), var(--red-light));
+      color: white;
+      box-shadow: 0 8px 24px rgba(200,16,46,0.4);
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #btn-next:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none !important;
+    }
+    #btn-next:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(200,16,46,0.5); }
+    #btn-next:not(:disabled):active { transform: scale(0.97); }
+    #btn-next.hidden { display: none; }
+
+    #btn-skip {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.82rem;
+      cursor: pointer;
+      padding: 4px 12px;
+      border-radius: 8px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #btn-skip:hover { color: var(--text); }
+    #btn-skip.hidden { display: none; }
+
+    /* ===== UTILITIES ===== */
+    .mt-4 { margin-top: 16px; }
+    .mb-4 { margin-bottom: 16px; }
+
+    /* ===== SPLASH DIVIDER ===== */
+    .divider {
+      width: 40px; height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+      border-radius: 999px;
+      margin: 16px 0;
+    }
+
+    /* ===== ZAQUEU INFO CARD ===== */
+    .zaqueu-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,184,28,0.07);
+      border: 1px solid rgba(255,184,28,0.2);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin-bottom: 20px;
+    }
+    .zaqueu-emoji { font-size: 2rem; flex-shrink: 0; }
+    .zaqueu-info { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+    .zaqueu-info strong { color: var(--gold); font-weight: 700; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 600px) {
+      .options-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 700px) {
+      .screen { padding: 40px 32px 140px; }
+    }
+
+    /* ===== FOCUS VISIBLE ===== */
+    .option:focus-visible, .btn-start:focus-visible, #btn-next:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    /* ===== FADE IN ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .screen.active .screen-inner > * {
+      animation: fadeUp 0.4s ease both;
+    }
+    .screen.active .screen-inner > *:nth-child(1) { animation-delay: 0.05s; }
+    .screen.active .screen-inner > *:nth-child(2) { animation-delay: 0.1s; }
+    .screen.active .screen-inner > *:nth-child(3) { animation-delay: 0.15s; }
+    .screen.active .screen-inner > *:nth-child(4) { animation-delay: 0.18s; }
+    .screen.active .screen-inner > *:nth-child(5) { animation-delay: 0.21s; }
+  </style>
+</head>
+<body>
+
+<!-- ===== PROGRESS ===== -->
+<div id="progress-wrap"><div id="progress-bar"></div></div>
+
+<!-- ===== HEADER ===== -->
+<header id="header">
+  <div id="header-logo">Zaqueu <span>Engraxate</span></div>
+  <div id="header-step"></div>
+</header>
+
+<!-- ===== STAGE ===== -->
+<main id="stage">
+
+  <!-- SCREEN 0 · INTRO -->
+  <div id="screen-0" class="screen active">
+    <div class="screen-inner" style="max-width:480px; padding-top: 20px;">
+      <span class="intro-badge">Distrital DF 2026</span>
+      <h1 class="intro-title">Queremos <span class="highlight">ouvir você!</span></h1>
+      <div class="divider"></div>
+      <p class="intro-subtitle">Campanha limpa é economia, sustentabilidade e inovação. Leva menos de 2 minutos.</p>
+      <button class="btn-start" onclick="goToScreen(1)">Iniciar pesquisa</button>
+    </div>
+    <div class="intro-decoration">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- SCREEN 1 · Q1 -->
+  <div id="screen-1" class="screen">
+    <div class="screen-inner">
+      <p class="q-number">Pergunta 1 de 7</p>
+      <h2 class="q-title">Você acha possível eleger um candidato sem sujar a cidade?</h2>
+      <div class="options" id="opts-1">
+        <div class="option" data-q="q1" data-v="Sim" onclick="selectOption(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">Sim</span>
+        </div>
+        <div class="option" data-q="q1" data-v="Não" onclick="selectOption(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">Não</span>
+        </div>
+        <div class="option" data-q="q1" data-v="Não sei" onclick="selectOption(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">Não sei</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 2 · Q2 -->
+  <div id="screen-2" class="screen">
+    <div class="screen-inner">
+      <p class="q-number">Pergunta 2 de 7</p>
+      <h2 class="q-title">Você conhece o Zaqueu?</h2>
+      <div class="zaqueu-card">
+        <span class="zaqueu-emoji">👞</span>
+        <p class="zaqueu-info"><strong>Zaqueu Engraxate</strong> é engraxate, produtor cultural e ativista social. Ele acredita que não sujar a cidade é uma revolução na política.</p>
+      </div>
+      <div class="options" id="opts-2">
+        <div class="option" data-q="q2" data-v="Sim, conheço bem" onclick="selectOption(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">Sim, conheço bem</span>
+        </div>
+        <div class="option" data-q="q2" data-v="Já ouvi falar" onclick="selectOption(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">Já ouvi falar</span>
+        </div>
+        <div class="option" data-q="q2" data-v="Não conheço" onclick="selectOption(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">Não conheço</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 3 · Q3 -->
+  <div id="screen-3" class="screen">
+    <div class="screen-inner">
+      <p class="q-number">Pergunta 3 de 7</p>
+      <h2 class="q-title">Se as eleições fossem hoje, você votaria no engraxate para representar o DF na Câmara Legislativa?</h2>
+      <div class="options" id="opts-3">
+        <div class="option" data-q="q3" data-v="Sim" onclick="selectOption(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">Sim</span>
+        </div>
+        <div class="option" data-q="q3" data-v="Não" onclick="selectOption(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">Não</span>
+        </div>
+        <div class="option" data-q="q3" data-v="Ainda não decidi / não sei" onclick="selectOption(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">Ainda não decidi / não sei</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 4 · Q4 -->
+  <div id="screen-4" class="screen">
+    <div class="screen-inner">
+      <p class="q-number">Pergunta 4 de 7</p>
+      <h2 class="q-title">Você sabia que a senadora Leila do Vôlei destinou R$&nbsp;34 milhões para a construção de 3 novas UBS?</h2>
+      <p class="q-desc">Três novas Unidades Básicas de Saúde (UBS) em <strong>Planaltina</strong>, <strong>Vicente Pires</strong> e <strong>Sol Nascente</strong>.</p>
+      <div class="options" id="opts-4">
+        <div class="option" data-q="q4" data-v="Sim" onclick="selectOption(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">Sim, sabia</span>
+        </div>
+        <div class="option" data-q="q4" data-v="Não" onclick="selectOption(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">Não sabia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 5 · Q5 — redes sociais -->
+  <div id="screen-5" class="screen">
+    <div class="screen-inner">
+      <p class="q-number">Pergunta 5 de 7</p>
+      <h2 class="q-title">Quais redes sociais você mais utiliza?</h2>
+      <p style="font-size:0.83rem;color:var(--text-muted);margin-bottom:16px;">Pode marcar mais de uma.</p>
+      <div class="options-grid" id="opts-5">
+        <div class="option checkbox" data-q="q5" data-v="Instagram" onclick="toggleCheckbox(this)">
+          <div class="option-dot"></div>
+          <span class="net-icon">📸</span>
+          <span class="option-label">Instagram</span>
+        </div>
+        <div class="option checkbox" data-q="q5" data-v="WhatsApp" onclick="toggleCheckbox(this)">
+          <div class="option-dot"></div>
+          <span class="net-icon">💬</span>
+          <span class="option-label">WhatsApp</span>
+        </div>
+        <div class="option checkbox" data-q="q5" data-v="TikTok" onclick="toggleCheckbox(this)">
+          <div class="option-dot"></div>
+          <span class="net-icon">🎵</span>
+          <span class="option-label">TikTok</span>
+        </div>
+        <div class="option checkbox" data-q="q5" data-v="Facebook" onclick="toggleCheckbox(this)">
+          <div class="option-dot"></div>
+          <span class="net-icon">👥</span>
+          <span class="option-label">Facebook</span>
+        </div>
+        <div class="option checkbox" data-q="q5" data-v="YouTube" onclick="toggleCheckbox(this)">
+          <div class="option-dot"></div>
+          <span class="net-icon">▶️</span>
+          <span class="option-label">YouTube</span>
+        </div>
+        <div class="option checkbox" data-q="q5" data-v="Twitter/X" onclick="toggleCheckbox(this)">
+          <div class="option-dot"></div>
+          <span class="net-icon">🐦</span>
+          <span class="option-label">Twitter/X</span>
+        </div>
+        <div class="option checkbox" data-q="q5" data-v="Telegram" onclick="toggleCheckbox(this)">
+          <div class="option-dot"></div>
+          <span class="net-icon">✈️</span>
+          <span class="option-label">Telegram</span>
+        </div>
+        <div class="option checkbox" data-q="q5" data-v="Kwai" onclick="toggleCheckbox(this)">
+          <div class="option-dot"></div>
+          <span class="net-icon">🎬</span>
+          <span class="option-label">Kwai</span>
+        </div>
+        <div class="option checkbox" data-q="q5" data-v="LinkedIn" onclick="toggleCheckbox(this)">
+          <div class="option-dot"></div>
+          <span class="net-icon">💼</span>
+          <span class="option-label">LinkedIn</span>
+        </div>
+        <div class="option checkbox" data-q="q5" data-v="Outras" onclick="toggleCheckbox(this)">
+          <div class="option-dot"></div>
+          <span class="net-icon">🌐</span>
+          <span class="option-label">Outras</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 6 · Q6 -->
+  <div id="screen-6" class="screen">
+    <div class="screen-inner">
+      <p class="q-number">Pergunta 6 de 7</p>
+      <h2 class="q-title">Você quer acompanhar nossa campanha e fazer parte da base de apoio do Zaqueu Engraxate?</h2>
+      <p class="q-desc">Se sim, informe seu nome e telefone na próxima etapa. Prometemos não encher de spam! 🙏</p>
+      <div class="options" id="opts-6">
+        <div class="option" data-q="q6" data-v="Sim" onclick="selectOption(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">Sim, quero acompanhar! ✊</span>
+        </div>
+        <div class="option" data-q="q6" data-v="Não" onclick="selectOption(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">Não, obrigado</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 7 · CONTATO (condicional) -->
+  <div id="screen-7" class="screen">
+    <div class="screen-inner">
+      <p class="q-number">Quase lá!</p>
+      <h2 class="q-title">Ótimo! Insira seus dados para entrarmos em contato.</h2>
+      <p class="q-desc" style="margin-bottom:24px;">Seus dados ficam apenas com a campanha. Nunca serão compartilhados.</p>
+
+      <div class="input-group">
+        <label for="input-nome">Seu nome completo</label>
+        <input type="text" id="input-nome" placeholder="Ex: Maria da Silva" autocomplete="name"
+               oninput="updateContactValidity()" />
+      </div>
+
+      <div class="input-group">
+        <label for="input-tel">Seu telefone (WhatsApp)</label>
+        <div class="phone-wrap">
+          <span class="phone-flag">🇧🇷 +55</span>
+          <input type="tel" id="input-tel" placeholder="(61) 99999-9999" autocomplete="tel"
+                 oninput="formatPhone(this); updateContactValidity()" inputmode="numeric" />
+        </div>
+      </div>
+      <p class="optional-note">* Ambos os campos são obrigatórios para continuar.</p>
+    </div>
+  </div>
+
+  <!-- SCREEN 8 · Q7 — pergunta 7 de 7 (para quem disse Não no Q6, pula para cá) -->
+  <!-- Na verdade o fluxo é: Q6=Sim → tela 7 (contato) → tela 9 (obrigado) -->
+  <!--                        Q6=Não → tela 9 (obrigado) -->
+
+  <!-- SCREEN 9 · OBRIGADO + RESULTADOS -->
+  <div id="screen-9" class="screen">
+    <div class="screen-inner" style="max-width:560px; text-align:center;">
+      <span class="thanks-icon">🎉</span>
+      <h2 class="thanks-title">Obrigado por participar!</h2>
+      <p class="thanks-sub">Sua opinião é muito importante para nossa campanha. Veja abaixo as parciais da pesquisa!</p>
+
+      <div class="results-section">
+        <div class="results-title">Resultados parciais</div>
+        <div id="results-container">
+          <div class="result-loading"><div class="spinner"></div> Carregando resultados…</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ===== BOTTOM NAV ===== -->
+<nav id="bottom-nav">
+  <button id="btn-next" disabled onclick="handleNext()">Próximo →</button>
+  <button id="btn-skip" class="hidden" onclick="handleSkip()">Pular esta etapa</button>
+</nav>
+
+<script>
+// ===== STATE =====
+const answers = {
+  session_id: crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2),
+  q1: null, q2: null, q3: null, q4: null,
+  q5: [],   q6: null, nome: null, telefone: null
+};
+
+const TOTAL_QUESTIONS = 7; // screens 1-7
+let currentScreen = 0;
+
+// ===== NAVIGATION =====
+function goToScreen(n) {
+  const prev = document.getElementById('screen-' + currentScreen);
+  const next = document.getElementById('screen-' + n);
+  if (!next) return;
+
+  prev.classList.add('exit-left');
+  setTimeout(() => {
+    prev.classList.remove('active', 'exit-left');
+  }, 350);
+
+  next.classList.add('active');
+  currentScreen = n;
+
+  window.scrollTo(0, 0);
+  updateUI();
+
+  if (n === 9) {
+    saveResponses();
+    loadResults();
+  }
+}
+
+function updateUI() {
+  const n = currentScreen;
+
+  // Progress bar
+  const pct = n === 0 ? 0 : n === 9 ? 100 : Math.round((n / TOTAL_QUESTIONS) * 90);
+  document.getElementById('progress-bar').style.width = pct + '%';
+
+  // Header step
+  const stepEl = document.getElementById('header-step');
+  if (n === 0 || n === 9) {
+    stepEl.textContent = '';
+  } else {
+    const label = n === 7 ? '7 de 7' : (n + ' de 7');
+    stepEl.textContent = 'PERGUNTA ' + label;
+  }
+
+  // Next button
+  const btn = document.getElementById('btn-next');
+  const skip = document.getElementById('btn-skip');
+
+  if (n === 0 || n === 9) {
+    btn.classList.add('hidden');
+    skip.classList.add('hidden');
+  } else if (n === 5) {
+    // redes sociais — pode avançar com ≥1 selecionado
+    btn.classList.remove('hidden');
+    btn.textContent = 'Próximo →';
+    btn.disabled = answers.q5.length === 0;
+    skip.classList.remove('hidden');
+  } else if (n === 7) {
+    // contato — validação separada
+    btn.classList.remove('hidden');
+    btn.textContent = 'Finalizar ✓';
+    skip.classList.remove('hidden');
+    updateContactValidity();
+  } else if (n === 6) {
+    btn.classList.remove('hidden');
+    btn.textContent = 'Próximo →';
+    btn.disabled = answers.q6 === null;
+    skip.classList.add('hidden');
+  } else {
+    btn.classList.remove('hidden');
+    btn.textContent = n === 6 ? 'Próximo →' : 'Próximo →';
+    const qKey = 'q' + n;
+    btn.disabled = answers[qKey] === null;
+    skip.classList.add('hidden');
+  }
+}
+
+function handleNext() {
+  const n = currentScreen;
+
+  if (n === 6) {
+    // Q6: se Sim → tela 7 (contato), se Não → tela 9
+    if (answers.q6 === 'Sim') {
+      goToScreen(7);
+    } else {
+      goToScreen(9);
+    }
+  } else if (n === 7) {
+    // Salvar contato
+    answers.nome     = document.getElementById('input-nome').value.trim() || null;
+    answers.telefone = document.getElementById('input-tel').value.trim() || null;
+    goToScreen(9);
+  } else if (n < 9) {
+    goToScreen(n + 1);
+  }
+}
+
+function handleSkip() {
+  const n = currentScreen;
+  if (n === 5) {
+    // redes sociais — pode pular
+    goToScreen(6);
+  } else if (n === 7) {
+    // contato — pode pular (não salva nome/tel)
+    goToScreen(9);
+  }
+}
+
+// ===== OPTION SELECTION (radio) =====
+function selectOption(el) {
+  const q = el.dataset.q;
+  const v = el.dataset.v;
+
+  // Deselect siblings
+  el.closest('.options').querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+
+  answers[q] = v;
+
+  // Auto-advance after short delay for radio buttons
+  setTimeout(() => {
+    const btn = document.getElementById('btn-next');
+    btn.disabled = false;
+    // Auto-advance on screens 1-4 and 6
+    if ([1, 2, 3, 4, 6].includes(currentScreen)) {
+      setTimeout(handleNext, 300);
+    }
+  }, 100);
+}
+
+// ===== CHECKBOX SELECTION (multi) =====
+function toggleCheckbox(el) {
+  const v = el.dataset.v;
+  el.classList.toggle('selected');
+  if (el.classList.contains('selected')) {
+    if (!answers.q5.includes(v)) answers.q5.push(v);
+  } else {
+    answers.q5 = answers.q5.filter(x => x !== v);
+  }
+  document.getElementById('btn-next').disabled = answers.q5.length === 0;
+}
+
+// ===== CONTACT VALIDITY =====
+function updateContactValidity() {
+  const nome  = document.getElementById('input-nome').value.trim();
+  const tel   = document.getElementById('input-tel').value.replace(/\D/g, '');
+  document.getElementById('btn-next').disabled = nome.length < 3 || tel.length < 10;
+}
+
+// ===== PHONE FORMAT =====
+function formatPhone(input) {
+  let v = input.value.replace(/\D/g, '').slice(0, 11);
+  if (v.length > 2 && v.length <= 6)      v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+  else if (v.length > 6 && v.length <= 10) v = '(' + v.slice(0,2) + ') ' + v.slice(2,6) + '-' + v.slice(6);
+  else if (v.length > 10)                  v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+  else if (v.length > 2)                   v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+  input.value = v;
+}
+
+// ===== SAVE RESPONSES =====
+async function saveResponses() {
+  try {
+    const payload = {
+      session_id: answers.session_id,
+      q1: answers.q1,
+      q2: answers.q2,
+      q3: answers.q3,
+      q4: answers.q4,
+      q5: answers.q5,
+      q6: answers.q6,
+      nome: answers.nome,
+      telefone: answers.telefone,
+      user_agent: navigator.userAgent
+    };
+    await fetch('/.netlify/functions/save-response', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch (e) {
+    console.warn('Erro ao salvar resposta:', e);
+  }
+}
+
+// ===== LOAD RESULTS =====
+async function loadResults() {
+  const container = document.getElementById('results-container');
+  try {
+    const res = await fetch('/.netlify/functions/get-results');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    renderResults(container, data);
+  } catch (e) {
+    console.warn('Erro ao carregar resultados:', e);
+    renderLocalResults(container);
+  }
+}
+
+function renderResults(container, data) {
+  const sections = [
+    {
+      title: 'É possível eleger sem sujar a cidade?',
+      key: 'q1',
+      options: ['Sim', 'Não', 'Não sei']
+    },
+    {
+      title: 'Votaria no engraxate para representar o DF?',
+      key: 'q3',
+      options: ['Sim', 'Não', 'Ainda não decidi / não sei']
+    },
+    {
+      title: 'Sabia sobre os R$ 34 mi para as UBS?',
+      key: 'q4',
+      options: ['Sim', 'Não']
+    }
+  ];
+
+  let html = '';
+  sections.forEach(sec => {
+    const counts = data[sec.key] || {};
+    const total  = Object.values(counts).reduce((a, b) => a + b, 0) || 1;
+    let bars = '';
+    sec.options.forEach(opt => {
+      const cnt = counts[opt] || 0;
+      const pct = Math.round((cnt / total) * 100);
+      bars += `
+        <div class="result-bar-item">
+          <div class="result-bar-label">
+            <span>${opt}</span>
+            <span class="pct">${pct}%</span>
+          </div>
+          <div class="result-bar-track">
+            <div class="result-bar-fill" data-pct="${pct}"></div>
+          </div>
+        </div>`;
+    });
+    html += `
+      <div class="result-q">
+        <div class="result-q-title">${sec.title}</div>
+        <div class="result-bar-row">${bars}</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:8px;">${total} resposta${total !== 1 ? 's' : ''}</div>
+      </div>`;
+  });
+
+  container.innerHTML = html;
+
+  // Animate bars
+  requestAnimationFrame(() => {
+    container.querySelectorAll('.result-bar-fill').forEach(bar => {
+      const pct = bar.dataset.pct;
+      setTimeout(() => { bar.style.width = pct + '%'; }, 100);
+    });
+  });
+}
+
+function renderLocalResults(container) {
+  // Fallback: show only the current user's answers as "your answers"
+  container.innerHTML = `
+    <div class="result-q" style="text-align:center;padding:20px;">
+      <p style="color:var(--text-muted);font-size:0.88rem;">Os resultados parciais serão exibidos assim que o banco de dados for configurado.<br><br>Obrigado pela sua participação! 🙏</p>
+    </div>`;
+}
+
+// ===== INIT =====
+updateUI();
+</script>
+</body>
+</html>

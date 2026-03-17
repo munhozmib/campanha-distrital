@@ -1,0 +1,9 @@
+{
+  "name": "pesquisa-zaqueu-engraxate",
+  "version": "1.0.0",
+  "description": "Pesquisa eleitoral Zaqueu Engraxate – Distrital DF 2026",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  }
+}
