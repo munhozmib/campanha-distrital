@@ -511,6 +511,31 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* ===== BOTÃO CAMPANHA ===== */
+    .btn-campanha {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: #1a1a00;
+      font-size: 1rem;
+      font-weight: 800;
+      padding: 16px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      box-shadow: 0 8px 28px rgba(255,184,28,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-bottom: 32px;
+      width: 100%;
+      max-width: 400px;
+    }
+    .btn-campanha:hover, .btn-campanha:active {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(255,184,28,0.5);
+    }
+
     /* ===== BOTTOM NAV ===== */
     #bottom-nav {
       position: fixed;
@@ -677,7 +702,7 @@
       <h2 class="q-title">Você conhece o Zaqueu?</h2>
       <div class="zaqueu-card">
         <span class="zaqueu-emoji">👞</span>
-        <p class="zaqueu-info"><strong>Zaqueu Engraxate</strong> é engraxate, produtor cultural e ativista social. Ele acredita que não sujar a cidade é uma revolução na política.</p>
+        <p class="zaqueu-info"><strong>Zaqueu Braga</strong> é engraxate, produtor cultural e ativista social. Ele acredita que não sujar a cidade é uma revolução na política.</p>
       </div>
       <div class="options" id="opts-2">
         <div class="option" data-q="q2" data-v="Sim, conheço bem" onclick="selectOption(this)">
@@ -885,6 +910,10 @@
       <span class="thanks-icon">🎉</span>
       <h2 class="thanks-title">Obrigado por participar!</h2>
       <p class="thanks-sub">Sua opinião é muito importante para nossa campanha. Veja abaixo as parciais da pesquisa!</p>
+
+      <a href="/campanha.html" class="btn-campanha">
+        👞 Conheça a campanha do Zaqueu
+      </a>
 
       <div class="results-section">
         <div class="results-title">Resultados parciais</div>

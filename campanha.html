@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zaqueu Braga 12300 · Deputado Distrital DF 2026</title>
+  <meta name="description" content="A força do trabalho no Legislativo. Zaqueu Braga, candidato a Deputado Distrital pelo PDT no DF. Número 12300." />
+  <meta name="theme-color" content="#C8102E" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Zaqueu Braga 12300 · Deputado Distrital DF 2026" />
+  <meta property="og:description" content="A força do trabalho no Legislativo. Nascido em Ceilândia, engraxate há 25 anos na CAIXA, candidato que chegou ao gabinete pela rua." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:       #C8102E;
+      --red-dark:  #9b0c22;
+      --red-light: #e8294a;
+      --gold:      #FFB81C;
+      --gold-dark: #d49a14;
+      --bg:        #0d0d14;
+      --bg2:       #15151f;
+      --card:      #1c1c2a;
+      --card2:     #232336;
+      --border:    rgba(255,255,255,0.08);
+      --text:      #f0f0f5;
+      --text-muted:#9898b0;
+      --white:     #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: rgba(13,13,20,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-logo {
+      font-weight: 900;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+    .header-logo span { color: var(--gold); }
+    .header-num {
+      background: var(--red);
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      padding: 0 0 60px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(13,13,20,0.2) 0%, rgba(13,13,20,0.7) 50%, rgba(13,13,20,1) 100%),
+        /* fallback gradient se não tiver foto */
+        radial-gradient(ellipse 120% 100% at 50% 0%, #3a0c14 0%, #0d0d14 70%);
+      background-size: cover;
+      background-position: center top;
+    }
+    /* Quando a foto existir, adicionar via inline style ou JS */
+    .hero-bg.has-photo {
+      background-image:
+        linear-gradient(to bottom, rgba(13,13,20,0.1) 0%, rgba(13,13,20,0.6) 55%, rgba(13,13,20,1) 100%),
+        var(--hero-img);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 24px;
+      max-width: 640px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(200,16,46,0.2);
+      border: 1px solid rgba(200,16,46,0.4);
+      color: #f27688;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .hero-name {
+      font-size: clamp(2.4rem, 9vw, 4rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+    .hero-name .gold { color: var(--gold); }
+    .hero-number {
+      font-size: clamp(1.1rem, 4vw, 1.4rem);
+      font-weight: 900;
+      color: var(--red-light);
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .hero-slogan {
+      font-size: clamp(1rem, 3.5vw, 1.25rem);
+      color: var(--text-muted);
+      line-height: 1.55;
+      font-style: italic;
+      margin-bottom: 32px;
+      max-width: 400px;
+    }
+    .hero-slogan strong { color: var(--text); font-style: normal; }
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--red), var(--red-light));
+      color: white;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 14px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(200,16,46,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(200,16,46,0.5); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+      font-family: inherit;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.3); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      animation: bounce 2s ease infinite;
+    }
+    .hero-scroll::after { content: '↓'; font-size: 1rem; }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ===== PHOTO SECTION ===== */
+    .hero-photo-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+    .hero-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(13,13,20,0.15) 0%,
+        rgba(13,13,20,0.45) 45%,
+        rgba(13,13,20,0.95) 75%,
+        rgba(13,13,20,1) 100%
+      );
+    }
+
+    /* ===== STATS ===== */
+    #stats {
+      background: linear-gradient(135deg, var(--red-dark), var(--red));
+      padding: 40px 20px;
+    }
+    .stats-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      text-align: center;
+    }
+    .stat-item {}
+    .stat-num {
+      font-size: clamp(1.8rem, 6vw, 2.6rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1.4;
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 64px 20px;
+    }
+    .section-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red-light);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .section-title {
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-title .gold { color: var(--gold); }
+    .section-text {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+    .section-text strong { color: var(--text); font-weight: 700; }
+    .divider-line {
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+      border-radius: 999px;
+      margin: 16px 0 24px;
+    }
+
+    /* ===== ORIGEM ===== */
+    #origem { background: var(--bg); }
+    .origem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .origem-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 16px;
+    }
+    .origem-card .oc-icon { font-size: 1.5rem; margin-bottom: 8px; display: block; }
+    .origem-card .oc-title { font-size: 0.9rem; font-weight: 800; color: var(--white); margin-bottom: 4px; }
+    .origem-card .oc-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* ===== PHOTO BAND ===== */
+    .photo-band {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      height: 260px;
+      background: var(--card);
+    }
+    .photo-band img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .photo-band-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--card), var(--card2));
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* ===== REALIZAÇÕES ===== */
+    #realizacoes { background: var(--bg2); }
+    .realizacoes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .real-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .real-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(200,16,46,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .real-body {}
+    .real-num {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: -0.02em;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .real-title { font-size: 1rem; font-weight: 800; color: var(--white); margin-bottom: 6px; }
+    .real-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ===== CAMPANHA LIMPA ===== */
+    #campanha-limpa {
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    #campanha-limpa::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+    }
+    .manifesto {
+      background: rgba(200,16,46,0.08);
+      border: 1px solid rgba(200,16,46,0.2);
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin: 24px 0;
+    }
+    .manifesto-quote {
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.6;
+      color: var(--white);
+      font-style: italic;
+    }
+    .manifesto-author {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 12px;
+      font-weight: 600;
+    }
+    .pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .pillar {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+    .pillar .p-icon { font-size: 1.4rem; display: block; margin-bottom: 8px; }
+    .pillar .p-title { font-size: 0.88rem; font-weight: 800; color: var(--white); margin-bottom: 4px; }
+    .pillar .p-text { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* ===== METAS ===== */
+    #metas { background: var(--bg2); }
+    .metas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .meta-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+    .meta-card .m-icon { font-size: 1.4rem; display: block; margin-bottom: 8px; }
+    .meta-card .m-num { font-size: 1.5rem; font-weight: 900; color: var(--red-light); display: block; margin-bottom: 4px; }
+    .meta-card .m-label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); line-height: 1.4; }
+
+    /* ===== FOTOS ===== */
+    #fotos { background: var(--bg); padding: 48px 0; }
+    .fotos-title {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 0 20px;
+    }
+    .fotos-scroll {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 0 20px 12px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .fotos-scroll::-webkit-scrollbar { display: none; }
+    .foto-item {
+      flex-shrink: 0;
+      width: 220px;
+      height: 280px;
+      border-radius: 16px;
+      overflow: hidden;
+      scroll-snap-align: start;
+      background: var(--card);
+    }
+    .foto-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .foto-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+    .foto-placeholder span { font-size: 2rem; }
+
+    /* ===== INSTAGRAM CTA ===== */
+    #instagram {
+      background: linear-gradient(135deg, #1a0020, #0d0d14);
+      padding: 64px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #instagram::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(131,58,180,0.2) 0%, transparent 70%);
+    }
+    .ig-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .ig-icon { font-size: 3rem; display: block; margin-bottom: 16px; }
+    .ig-title {
+      font-size: clamp(1.4rem, 5vw, 1.8rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .ig-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .btn-instagram {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      color: white;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 16px 32px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 8px 28px rgba(131,58,180,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .btn-instagram:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(131,58,180,0.5); }
+
+    /* ===== VOTE ===== */
+    #vote {
+      background: var(--red);
+      padding: 56px 20px;
+      text-align: center;
+    }
+    .vote-inner { max-width: 480px; margin: 0 auto; }
+    .vote-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 8px;
+    }
+    .vote-num {
+      font-size: clamp(4rem, 18vw, 7rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: white;
+      line-height: 1;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.3);
+      margin-bottom: 8px;
+    }
+    .vote-name {
+      font-size: clamp(1.2rem, 4vw, 1.6rem);
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .vote-party {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .footer-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .footer-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--red-light);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+    .footer-back:hover { text-decoration: underline; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 480px) {
+      .realizacoes-grid { grid-template-columns: 1fr; }
+      .fotos-scroll { padding: 0 32px 12px; }
+    }
+    @media (min-width: 600px) {
+      .origem-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="header-logo">Zaqueu <span>Braga</span></div>
+  <div class="header-num">12300</div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <!-- Foto de fundo: coloque img/zaqueu-hero.jpg no projeto -->
+  <div class="hero-photo-wrap">
+    <img src="img/zaqueu-hero.jpg" alt="Zaqueu Braga"
+         onerror="this.parentElement.style.display='none'" />
+    <div class="hero-overlay"></div>
+  </div>
+  <!-- Fallback gradient quando não há foto -->
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <span class="hero-badge">🗳️ Deputado Distrital · PDT · DF 2026</span>
+    <h1 class="hero-name">Zaqueu<br><span class="gold">Braga</span></h1>
+    <p class="hero-number">Número 12300</p>
+    <p class="hero-slogan"><strong>"A força do trabalho</strong><br>no Legislativo."</p>
+    <div class="hero-ctas">
+      <a href="https://www.instagram.com/zaqueudistrital" target="_blank" rel="noopener"
+         class="btn-primary">📸 Seguir no Instagram</a>
+      <a href="/" class="btn-secondary">📊 Responder pesquisa</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Role</div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num">25</span>
+      <span class="stat-label">anos como engraxate na CAIXA</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">120+</span>
+      <span class="stat-label">profissionais formados</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">16mil</span>
+      <span class="stat-label">brinquedos distribuídos</span>
+    </div>
+  </div>
+</div>
+
+<!-- ORIGEM -->
+<section id="origem">
+  <div class="section-inner">
+    <span class="section-tag">Quem é Zaqueu</span>
+    <h2 class="section-title">Da rua<br>para o <span class="gold">Legislativo</span></h2>
+    <div class="divider-line"></div>
+    <p class="section-text">
+      Nascido em <strong>Ceilândia</strong> e criado em <strong>Samambaia</strong>, Zaqueu construiu sua vida nas ruas — conhecendo de perto a realidade do povo do DF.
+      Com <strong>25 anos de atuação como engraxate na CAIXA</strong>, sua trajetória é marcada pela coerência, honestidade e pelo serviço real à comunidade.
+    </p>
+    <p class="section-text" style="margin-top:12px;">
+      Não é um político de gabinete. É a rua que pede voz.
+    </p>
+
+    <div class="origem-grid">
+      <div class="origem-card">
+        <span class="oc-icon">📍</span>
+        <div class="oc-title">Ceilândia & Samambaia</div>
+        <div class="oc-text">Raízes populares. Conhece a realidade das periferias do DF.</div>
+      </div>
+      <div class="origem-card">
+        <span class="oc-icon">👞</span>
+        <div class="oc-title">25 anos na CAIXA</div>
+        <div class="oc-text">Engraxate. Serviço, dignidade e coerência em cada atendimento.</div>
+      </div>
+      <div class="origem-card">
+        <span class="oc-icon">✊</span>
+        <div class="oc-title">Ativismo comunitário</div>
+        <div class="oc-text">Ação direta onde o Estado não chega.</div>
+      </div>
+      <div class="origem-card">
+        <span class="oc-icon">🟡</span>
+        <div class="oc-title">PDT — Trabalhista</div>
+        <div class="oc-text">Ideais de raiz. Renovação com propósito.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOTO BAND 1 -->
+<div class="photo-band">
+  <img src="img/zaqueu-engraxate-brasil.jpg" alt="Zaqueu no Programa Engraxate Brasil"
+       onerror="this.style.display='none'" />
+  <div class="photo-band-placeholder">
+    <span>📸</span>Programa Engraxate Brasil
+  </div>
+</div>
+
+<!-- REALIZAÇÕES -->
+<section id="realizacoes">
+  <div class="section-inner">
+    <span class="section-tag">Prova de entrega real</span>
+    <h2 class="section-title">Antes do mandato,<br><span class="gold">já mudou vidas.</span></h2>
+    <div class="divider-line"></div>
+
+    <div class="realizacoes-grid">
+      <div class="real-card">
+        <div class="real-icon">👞</div>
+        <div class="real-body">
+          <span class="real-num">120+ profissionais</span>
+          <div class="real-title">Engraxate Brasil</div>
+          <div class="real-text">
+            Projeto federal aprovado. Formação profissional com dignidade para pessoas em situação de vulnerabilidade social, com fomento do MDS e emenda da Senadora Leila Barros.
+          </div>
+        </div>
+      </div>
+
+      <div class="real-card">
+        <div class="real-icon">🧸</div>
+        <div class="real-body">
+          <span class="real-num">16.000 brinquedos</span>
+          <div class="real-title">Ativismo Social</div>
+          <div class="real-text">
+            16 mil brinquedos distribuídos e 3 mil cestas básicas entregues. Ação direta nas periferias onde o Estado não chega.
+          </div>
+        </div>
+      </div>
+
+      <div class="real-card">
+        <div class="real-icon">🌱</div>
+        <div class="real-body">
+          <span class="real-num">100% integradas</span>
+          <div class="real-title">Sustentabilidade</div>
+          <div class="real-text">
+            Mutirões de limpeza e plantio nas periferias do DF. Meio ambiente como pauta do povo — não sujar a cidade é uma revolução.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPANHA LIMPA -->
+<section id="campanha-limpa">
+  <div class="section-inner">
+    <span class="section-tag">O diferencial</span>
+    <h2 class="section-title">Campanha limpa<br>é <span class="gold">economia, inovação</span><br>e sustentabilidade.</h2>
+    <div class="divider-line"></div>
+
+    <div class="manifesto">
+      <p class="manifesto-quote">
+        "Essa não é uma candidatura que nasce do gabinete, mas uma que chega ao gabinete pela rua."
+      </p>
+      <p class="manifesto-author">— Zaqueu Braga, 2026</p>
+    </div>
+
+    <p class="section-text">
+      A proposta da campanha é clara: <strong>zero poluição visual.</strong> Enquanto outros candidatos sujam a cidade com milhares de panfletos e cartazes, Zaqueu demonstra na prática o que defende — uma política mais limpa, mais honesta e mais sustentável.
+    </p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <span class="p-icon">♻️</span>
+        <div class="p-title">Sem poluição visual</div>
+        <div class="p-text">Campanha 100% digital e presencial, sem sujar as ruas do DF.</div>
+      </div>
+      <div class="pillar">
+        <span class="p-icon">📱</span>
+        <div class="p-title">Digital orgânico</div>
+        <div class="p-text">TikTok, Instagram e Kwai. Humor e cotidiano como ponte para a política.</div>
+      </div>
+      <div class="pillar">
+        <span class="p-icon">🤝</span>
+        <div class="p-title">Mutirões</div>
+        <div class="p-text">12 mutirões comunitários em 6 regiões do DF.</div>
+      </div>
+      <div class="pillar">
+        <span class="p-icon">🍽️</span>
+        <div class="p-title">Almoços temáticos</div>
+        <div class="p-text">Política feita olho no olho com garis, professoras, catadores e mais.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METAS -->
+<section id="metas">
+  <div class="section-inner">
+    <span class="section-tag">45 dias de campanha</span>
+    <h2 class="section-title">Números da<br><span class="gold">mobilização</span></h2>
+    <div class="divider-line"></div>
+
+    <div class="metas-grid">
+      <div class="meta-card">
+        <span class="m-icon">🎬</span>
+        <span class="m-num">180</span>
+        <span class="m-label">vídeos produzidos (3/dia)</span>
+      </div>
+      <div class="meta-card">
+        <span class="m-icon">🧹</span>
+        <span class="m-num">12</span>
+        <span class="m-label">mutirões comunitários</span>
+      </div>
+      <div class="meta-card">
+        <span class="m-icon">🍽️</span>
+        <span class="m-num">10</span>
+        <span class="m-label">almoços temáticos</span>
+      </div>
+      <div class="meta-card">
+        <span class="m-icon">🙏</span>
+        <span class="m-num">5</span>
+        <span class="m-label">ações com pop. em situação de rua</span>
+      </div>
+      <div class="meta-card">
+        <span class="m-icon">📍</span>
+        <span class="m-num">6</span>
+        <span class="m-label">regiões do DF cobertas</span>
+      </div>
+      <div class="meta-card">
+        <span class="m-icon">👥</span>
+        <span class="m-num">2.100</span>
+        <span class="m-label">apoiadores cadastrados</span>
+      </div>
+    </div>
+
+    <p class="section-text" style="margin-top:28px; font-size:0.85rem;">
+      Regiões prioritárias: <strong>Samambaia · Ceilândia · Taguatinga · Recanto das Emas · Estrutural · Brazlândia</strong>
+    </p>
+  </div>
+</section>
+
+<!-- FOTOS GALERIA -->
+<section id="fotos">
+  <div class="fotos-title">
+    <span class="section-tag" style="display:block;text-align:center;">Registros</span>
+    <h2 class="section-title" style="text-align:center;">Zaqueu nas <span class="gold">ruas do DF</span></h2>
+  </div>
+  <div class="fotos-scroll">
+    <div class="foto-item">
+      <img src="img/zaqueu-1.jpg" alt="Zaqueu Braga"
+           onerror="this.parentElement.querySelector('.foto-placeholder').style.display='flex'; this.style.display='none'" />
+      <div class="foto-placeholder" style="display:none"><span>📸</span>Foto 1</div>
+    </div>
+    <div class="foto-item">
+      <img src="img/zaqueu-2.jpg" alt="Zaqueu Braga em campo"
+           onerror="this.parentElement.querySelector('.foto-placeholder').style.display='flex'; this.style.display='none'" />
+      <div class="foto-placeholder" style="display:none"><span>📸</span>Foto 2</div>
+    </div>
+    <div class="foto-item">
+      <img src="img/zaqueu-3.jpg" alt="Zaqueu Braga com apoiadores"
+           onerror="this.parentElement.querySelector('.foto-placeholder').style.display='flex'; this.style.display='none'" />
+      <div class="foto-placeholder" style="display:none"><span>📸</span>Foto 3</div>
+    </div>
+    <div class="foto-item">
+      <img src="img/zaqueu-4.jpg" alt="Zaqueu Braga"
+           onerror="this.parentElement.querySelector('.foto-placeholder').style.display='flex'; this.style.display='none'" />
+      <div class="foto-placeholder" style="display:none"><span>📸</span>Foto 4</div>
+    </div>
+    <div class="foto-item">
+      <img src="img/zaqueu-5.jpg" alt="Programa Engraxate Brasil"
+           onerror="this.parentElement.querySelector('.foto-placeholder').style.display='flex'; this.style.display='none'" />
+      <div class="foto-placeholder" style="display:none"><span>📸</span>Foto 5</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM CTA -->
+<section id="instagram">
+  <div class="ig-inner">
+    <span class="ig-icon">📸</span>
+    <h2 class="ig-title">Acompanhe a campanha</h2>
+    <p class="ig-sub">
+      Siga <strong>@zaqueudistrital</strong> no Instagram e fique por dentro de cada mutirão, almoço temático e ação da campanha. A política feita pelo povo, pra você ver ao vivo.
+    </p>
+    <a href="https://www.instagram.com/zaqueudistrital" target="_blank" rel="noopener"
+       class="btn-instagram">
+      📸 @zaqueudistrital
+    </a>
+  </div>
+</section>
+
+<!-- VOTE -->
+<section id="vote">
+  <div class="vote-inner">
+    <p class="vote-label">Na urna, vote</p>
+    <div class="vote-num">12300</div>
+    <p class="vote-name">Zaqueu Braga</p>
+    <p class="vote-party">Deputado Distrital · PDT · DF 2026</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-text">
+    Campanha Zaqueu Braga 12300 · PDT — Partido Democrático Trabalhista · Distrito Federal · 2026<br>
+    "A força do trabalho no Legislativo."
+  </p>
+  <a href="/" class="footer-back">← Voltar para a pesquisa</a>
+</footer>
+
+</body>
+</html>
