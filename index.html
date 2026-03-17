@@ -34,14 +34,19 @@
       --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+      height: 100%;
+      overflow: hidden; /* impede qualquer scroll no nível raiz */
+    }
 
     body {
       font-family: 'Inter', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
-      min-height: 100dvh;
-      overflow-x: hidden;
+      height: 100dvh;   /* altura exata da viewport, sem expandir */
+      overflow: hidden; /* bloqueia scroll no body inteiro */
       display: flex;
       flex-direction: column;
     }
@@ -93,18 +98,14 @@
     /* ===== MAIN STAGE ===== */
     #stage {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding-top: 68px; /* header height */
-      padding-bottom: 100px; /* nav height */
-      min-height: 100dvh;
       position: relative;
+      overflow: hidden; /* ESSENCIAL: corta o translateX dos slides inativos */
     }
 
     /* ===== SCREENS ===== */
     .screen {
       position: absolute;
-      inset: 68px 0 0 0;
+      inset: 68px 0 0 0;      /* top=68px → abaixo do header; bottom=0 → acima do nav */
       padding: 24px 20px 120px;
       display: flex;
       flex-direction: column;
@@ -113,8 +114,11 @@
       pointer-events: none;
       transform: translateX(40px);
       transition: opacity var(--transition), transform var(--transition);
-      overflow-y: auto;
+      overflow-x: hidden;      /* garante que nenhum filho vaze lateralmente */
+      overflow-y: auto;        /* conteúdo longo rola DENTRO da tela */
       -webkit-overflow-scrolling: touch;
+      /* garante que o scroll interno funcione no iOS */
+      overscroll-behavior: contain;
     }
     .screen.active {
       opacity: 1;
