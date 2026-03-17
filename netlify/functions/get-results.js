@@ -26,7 +26,7 @@ exports.handler = async (event) => {
   try {
     // Fetch all responses (only the columns we need for charting)
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/responses?select=q1,q2,q3,q4,q5,q6`,
+      `${SUPABASE_URL}/rest/v1/responses?select=q1,q2,q3,q4,q5,q6,q7`,
       {
         headers: {
           'apikey':        SUPABASE_ANON_KEY,
@@ -44,10 +44,10 @@ exports.handler = async (event) => {
     const rows = await res.json();
 
     // Aggregate counts
-    const agg = { q1: {}, q2: {}, q3: {}, q4: {}, q5: {}, q6: {} };
+    const agg = { q1: {}, q2: {}, q3: {}, q4: {}, q5: {}, q6: {}, q7: {} };
 
     rows.forEach(row => {
-      ['q1', 'q2', 'q3', 'q4', 'q6'].forEach(key => {
+      ['q1', 'q2', 'q3', 'q4', 'q6', 'q7'].forEach(key => {
         const v = row[key];
         if (v) agg[key][v] = (agg[key][v] || 0) + 1;
       });

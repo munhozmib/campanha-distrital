@@ -45,6 +45,8 @@ exports.handler = async (event) => {
     q6:         payload.q6         || null,
     nome:       payload.nome       || null,
     telefone:   payload.telefone   || null,
+    q7:         payload.q7         || null,
+    q7_outro:   payload.q7_outro   || null,
     user_agent: String(payload.user_agent || '').slice(0, 512),
     ip:         event.headers['x-forwarded-for']?.split(',')[0]?.trim() || null
   };

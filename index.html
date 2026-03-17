@@ -387,6 +387,27 @@
       margin-top: 4px;
     }
 
+    /* ===== Q7 OUTRO EXPAND ===== */
+    .outro-wrap {
+      display: none;
+      margin-top: 12px;
+    }
+    .outro-wrap.visible { display: block; }
+    .outro-wrap input {
+      background: var(--bg2);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 0.92rem;
+      font-family: inherit;
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .outro-wrap input:focus { border-color: var(--red); }
+    .outro-wrap input::placeholder { color: var(--text-muted); }
+
     /* ===== THANK YOU SCREEN ===== */
     #screen-9 {
       background:
@@ -817,9 +838,42 @@
     </div>
   </div>
 
-  <!-- SCREEN 8 · Q7 — pergunta 7 de 7 (para quem disse Não no Q6, pula para cá) -->
-  <!-- Na verdade o fluxo é: Q6=Sim → tela 7 (contato) → tela 9 (obrigado) -->
-  <!--                        Q6=Não → tela 9 (obrigado) -->
+  <!-- SCREEN 8 · Q7 — Como você chegou até aqui? -->
+  <div id="screen-8" class="screen">
+    <div class="screen-inner">
+      <p class="q-number">Última pergunta!</p>
+      <h2 class="q-title">Como você chegou até aqui?</h2>
+      <div class="options" id="opts-8">
+        <div class="option" data-q="q7" data-v="Instagram" onclick="selectQ7Option(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">📸 Instagram</span>
+        </div>
+        <div class="option" data-q="q7" data-v="Facebook" onclick="selectQ7Option(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">👥 Facebook</span>
+        </div>
+        <div class="option" data-q="q7" data-v="Google" onclick="selectQ7Option(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">🔍 Google</span>
+        </div>
+        <div class="option" data-q="q7" data-v="Outro" onclick="selectQ7Option(this)">
+          <div class="option-dot"></div>
+          <div style="flex:1">
+            <span class="option-label">🤝 Fui indicado(a) por alguém</span>
+            <div id="q7-outro-wrap" class="outro-wrap">
+              <input type="text" id="input-q7-outro"
+                     placeholder="Nome de quem te indicou (opcional)"
+                     onclick="event.stopPropagation()" />
+            </div>
+          </div>
+        </div>
+        <div class="option" data-q="q7" data-v="Não lembro" onclick="selectQ7Option(this)">
+          <div class="option-dot"></div>
+          <span class="option-label">🤔 Não lembro</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- SCREEN 9 · OBRIGADO + RESULTADOS -->
   <div id="screen-9" class="screen">
@@ -850,10 +904,11 @@
 const answers = {
   session_id: crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2),
   q1: null, q2: null, q3: null, q4: null,
-  q5: [],   q6: null, nome: null, telefone: null
+  q5: [],   q6: null, nome: null, telefone: null,
+  q7: null, q7_outro: null
 };
 
-const TOTAL_QUESTIONS = 7; // screens 1-7
+const TOTAL_QUESTIONS = 7; // perguntas Q1–Q7
 let currentScreen = 0;
 
 // ===== NAVIGATION =====
@@ -882,17 +937,20 @@ function goToScreen(n) {
 function updateUI() {
   const n = currentScreen;
 
-  // Progress bar
-  const pct = n === 0 ? 0 : n === 9 ? 100 : Math.round((n / TOTAL_QUESTIONS) * 90);
-  document.getElementById('progress-bar').style.width = pct + '%';
+  // Progress bar — cada tela tem % definida
+  const progressMap = [0, 12, 24, 36, 48, 60, 72, 82, 92, 100];
+  document.getElementById('progress-bar').style.width = (progressMap[n] || 0) + '%';
 
   // Header step
   const stepEl = document.getElementById('header-step');
   if (n === 0 || n === 9) {
     stepEl.textContent = '';
-  } else {
-    const label = n === 7 ? '7 de 7' : (n + ' de 7');
-    stepEl.textContent = 'PERGUNTA ' + label;
+  } else if (n <= 6) {
+    stepEl.textContent = 'PERGUNTA ' + n + ' DE 7';
+  } else if (n === 7) {
+    stepEl.textContent = 'DADOS DE CONTATO';
+  } else if (n === 8) {
+    stepEl.textContent = 'ÚLTIMA PERGUNTA';
   }
 
   // Next button
@@ -911,9 +969,15 @@ function updateUI() {
   } else if (n === 7) {
     // contato — validação separada
     btn.classList.remove('hidden');
-    btn.textContent = 'Finalizar ✓';
+    btn.textContent = 'Próximo →';
     skip.classList.remove('hidden');
     updateContactValidity();
+  } else if (n === 8) {
+    // como chegou — pode pular
+    btn.classList.remove('hidden');
+    btn.textContent = 'Ver resultados →';
+    btn.disabled = answers.q7 === null;
+    skip.classList.remove('hidden');
   } else if (n === 6) {
     btn.classList.remove('hidden');
     btn.textContent = 'Próximo →';
@@ -921,7 +985,7 @@ function updateUI() {
     skip.classList.add('hidden');
   } else {
     btn.classList.remove('hidden');
-    btn.textContent = n === 6 ? 'Próximo →' : 'Próximo →';
+    btn.textContent = 'Próximo →';
     const qKey = 'q' + n;
     btn.disabled = answers[qKey] === null;
     skip.classList.add('hidden');
@@ -932,16 +996,22 @@ function handleNext() {
   const n = currentScreen;
 
   if (n === 6) {
-    // Q6: se Sim → tela 7 (contato), se Não → tela 9
+    // Q6: se Sim → tela 7 (contato), se Não → tela 8 (como chegou)
     if (answers.q6 === 'Sim') {
       goToScreen(7);
     } else {
-      goToScreen(9);
+      goToScreen(8);
     }
   } else if (n === 7) {
-    // Salvar contato
+    // Salvar contato → tela 8 (como chegou)
     answers.nome     = document.getElementById('input-nome').value.trim() || null;
     answers.telefone = document.getElementById('input-tel').value.trim() || null;
+    goToScreen(8);
+  } else if (n === 8) {
+    // Salvar q7_outro se "Outro" foi selecionado
+    if (answers.q7 === 'Outro') {
+      answers.q7_outro = document.getElementById('input-q7-outro').value.trim() || null;
+    }
     goToScreen(9);
   } else if (n < 9) {
     goToScreen(n + 1);
@@ -951,10 +1021,12 @@ function handleNext() {
 function handleSkip() {
   const n = currentScreen;
   if (n === 5) {
-    // redes sociais — pode pular
     goToScreen(6);
   } else if (n === 7) {
-    // contato — pode pular (não salva nome/tel)
+    // contato — pula para "como chegou"
+    goToScreen(8);
+  } else if (n === 8) {
+    // como chegou — pula para obrigado
     goToScreen(9);
   }
 }
@@ -993,6 +1065,31 @@ function toggleCheckbox(el) {
   document.getElementById('btn-next').disabled = answers.q5.length === 0;
 }
 
+// ===== Q7 OPTION SELECTION (com "Outro" especial) =====
+function selectQ7Option(el) {
+  const v = el.dataset.v;
+
+  el.closest('.options').querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  answers.q7 = v;
+
+  const outroWrap = document.getElementById('q7-outro-wrap');
+  const btn = document.getElementById('btn-next');
+
+  if (v === 'Outro') {
+    outroWrap.classList.add('visible');
+    // Campo é opcional — botão já habilitado ao selecionar
+    btn.disabled = false;
+    setTimeout(() => document.getElementById('input-q7-outro').focus(), 80);
+  } else {
+    outroWrap.classList.remove('visible');
+    answers.q7_outro = null;
+    btn.disabled = false;
+    // Auto-avança para os outros casos
+    setTimeout(handleNext, 400);
+  }
+}
+
 // ===== CONTACT VALIDITY =====
 function updateContactValidity() {
   const nome  = document.getElementById('input-nome').value.trim();
@@ -1023,6 +1120,8 @@ async function saveResponses() {
       q6: answers.q6,
       nome: answers.nome,
       telefone: answers.telefone,
+      q7: answers.q7,
+      q7_outro: answers.q7_outro,
       user_agent: navigator.userAgent
     };
     await fetch('/.netlify/functions/save-response', {
