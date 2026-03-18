@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zaqueu Braga 12300 · Deputado Distrital DF 2026</title>
-  <meta name="description" content="A força do trabalho no Legislativo. Zaqueu Braga, candidato a Deputado Distrital pelo PDT no DF. Número 12300." />
+  <title>Zaqueu Braga · Deputado Distrital DF 2026</title>
+  <meta name="description" content="A força do trabalho no Legislativo. Zaqueu Braga, candidato a Deputado Distrital pelo PDT no DF. 12.300 motivos para mudar." />
   <meta name="theme-color" content="#C8102E" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Zaqueu Braga 12300 · Deputado Distrital DF 2026" />
+  <meta property="og:title" content="Zaqueu Braga · Deputado Distrital DF 2026" />
   <meta property="og:description" content="A força do trabalho no Legislativo. Nascido em Ceilândia, engraxate há 25 anos na CAIXA, candidato que chegou ao gabinete pela rua." />
   <meta property="og:type" content="website" />
 
@@ -65,14 +65,15 @@
       color: var(--white);
     }
     .header-logo span { color: var(--gold); }
-    .header-num {
-      background: var(--red);
-      color: white;
-      font-size: 0.8rem;
-      font-weight: 800;
+    .header-badge {
+      background: rgba(200,16,46,0.18);
+      border: 1px solid rgba(200,16,46,0.35);
+      color: #f27688;
+      font-size: 0.72rem;
+      font-weight: 700;
       padding: 4px 12px;
       border-radius: 999px;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
     }
 
     /* ===== HERO ===== */
@@ -90,16 +91,9 @@
       inset: 0;
       background:
         linear-gradient(to bottom, rgba(13,13,20,0.2) 0%, rgba(13,13,20,0.7) 50%, rgba(13,13,20,1) 100%),
-        /* fallback gradient se não tiver foto */
         radial-gradient(ellipse 120% 100% at 50% 0%, #3a0c14 0%, #0d0d14 70%);
       background-size: cover;
       background-position: center top;
-    }
-    /* Quando a foto existir, adicionar via inline style ou JS */
-    .hero-bg.has-photo {
-      background-image:
-        linear-gradient(to bottom, rgba(13,13,20,0.1) 0%, rgba(13,13,20,0.6) 55%, rgba(13,13,20,1) 100%),
-        var(--hero-img);
     }
     .hero-content {
       position: relative;
@@ -132,12 +126,13 @@
       margin-bottom: 8px;
     }
     .hero-name .gold { color: var(--gold); }
-    .hero-number {
-      font-size: clamp(1.1rem, 4vw, 1.4rem);
-      font-weight: 900;
-      color: var(--red-light);
-      letter-spacing: 0.08em;
+    .hero-motivos {
+      font-size: clamp(1rem, 3.5vw, 1.2rem);
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 0.01em;
       margin-bottom: 16px;
+      line-height: 1.3;
     }
     .hero-slogan {
       font-size: clamp(1rem, 3.5vw, 1.25rem);
@@ -243,20 +238,20 @@
       max-width: 640px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
       gap: 8px;
       text-align: center;
     }
     .stat-item {}
     .stat-num {
-      font-size: clamp(1.8rem, 6vw, 2.6rem);
+      font-size: clamp(1.6rem, 5.5vw, 2.4rem);
       font-weight: 900;
       letter-spacing: -0.03em;
       color: var(--white);
       display: block;
     }
     .stat-label {
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 600;
       color: rgba(255,255,255,0.75);
       text-transform: uppercase;
@@ -348,6 +343,21 @@
       font-size: 0.85rem;
     }
 
+    /* ===== VÍDEO ===== */
+    #video-engraxate { background: var(--bg); }
+    .video-wrap {
+      border-radius: 14px;
+      overflow: hidden;
+      background: #000;
+      margin-top: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    .video-wrap video {
+      width: 100%;
+      display: block;
+      max-height: 480px;
+    }
+
     /* ===== REALIZAÇÕES ===== */
     #realizacoes { background: var(--bg2); }
     .realizacoes-grid {
@@ -388,9 +398,47 @@
     .real-title { font-size: 1rem; font-weight: 800; color: var(--white); margin-bottom: 6px; }
     .real-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
 
+    /* ===== LEILA BARROS ===== */
+    #leila { background: var(--bg); }
+    .leila-foto-wrap {
+      margin-top: 28px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .leila-foto-wrap img {
+      width: 100%;
+      height: auto;
+      max-height: 440px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .leila-caption {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 10px 16px;
+      background: var(--card);
+      font-style: italic;
+    }
+    .leila-destaque {
+      background: rgba(255,184,28,0.07);
+      border: 1px solid rgba(255,184,28,0.2);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 24px;
+    }
+    .leila-destaque p {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .leila-destaque strong { color: var(--gold); }
+
     /* ===== CAMPANHA LIMPA ===== */
     #campanha-limpa {
-      background: var(--bg);
+      background: var(--bg2);
       position: relative;
       overflow: hidden;
     }
@@ -439,7 +487,7 @@
     .pillar .p-text { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; }
 
     /* ===== METAS ===== */
-    #metas { background: var(--bg2); }
+    #metas { background: var(--bg); }
     .metas-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -456,9 +504,14 @@
     .meta-card .m-icon { font-size: 1.4rem; display: block; margin-bottom: 8px; }
     .meta-card .m-num { font-size: 1.5rem; font-weight: 900; color: var(--red-light); display: block; margin-bottom: 4px; }
     .meta-card .m-label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); line-height: 1.4; }
+    .meta-card.destaque {
+      border-color: rgba(255,184,28,0.3);
+      background: rgba(255,184,28,0.05);
+    }
+    .meta-card.destaque .m-num { color: var(--gold); }
 
     /* ===== FOTOS ===== */
-    #fotos { background: var(--bg); padding: 48px 0; }
+    #fotos { background: var(--bg2); padding: 48px 0; }
     .fotos-title {
       text-align: center;
       margin-bottom: 24px;
@@ -551,14 +604,14 @@
     }
     .btn-instagram:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(131,58,180,0.5); }
 
-    /* ===== VOTE ===== */
-    #vote {
+    /* ===== 12.300 MOTIVOS ===== */
+    #motivos {
       background: var(--red);
       padding: 56px 20px;
       text-align: center;
     }
-    .vote-inner { max-width: 480px; margin: 0 auto; }
-    .vote-label {
+    .motivos-inner { max-width: 480px; margin: 0 auto; }
+    .motivos-label {
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.15em;
@@ -566,23 +619,23 @@
       color: rgba(255,255,255,0.7);
       margin-bottom: 8px;
     }
-    .vote-num {
+    .motivos-num {
       font-size: clamp(4rem, 18vw, 7rem);
       font-weight: 900;
       letter-spacing: -0.04em;
       color: white;
       line-height: 1;
       text-shadow: 0 4px 24px rgba(0,0,0,0.3);
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
-    .vote-name {
+    .motivos-text {
       font-size: clamp(1.2rem, 4vw, 1.6rem);
       font-weight: 900;
       color: var(--gold);
       letter-spacing: -0.02em;
-      margin-bottom: 4px;
+      margin-bottom: 12px;
     }
-    .vote-party {
+    .motivos-sub {
       font-size: 0.85rem;
       color: rgba(255,255,255,0.7);
       font-weight: 600;
@@ -629,7 +682,7 @@
 <!-- HEADER -->
 <header id="header">
   <div class="header-logo">Zaqueu <span>Braga</span></div>
-  <div class="header-num">12300</div>
+  <div class="header-badge">PDT · Distrital DF 2026</div>
 </header>
 
 <!-- HERO -->
@@ -645,7 +698,7 @@
   <div class="hero-content">
     <span class="hero-badge">🗳️ Deputado Distrital · PDT · DF 2026</span>
     <h1 class="hero-name">Zaqueu<br><span class="gold">Braga</span></h1>
-    <p class="hero-number">Número 12300</p>
+    <p class="hero-motivos">12.300 motivos para mudar.</p>
     <p class="hero-slogan"><strong>"A força do trabalho</strong><br>no Legislativo."</p>
     <div class="hero-ctas">
       <a href="https://www.instagram.com/zaqueudistrital" target="_blank" rel="noopener"
@@ -670,6 +723,14 @@
     <div class="stat-item">
       <span class="stat-num">16mil</span>
       <span class="stat-label">brinquedos distribuídos</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">500</span>
+      <span class="stat-label">meta de voluntários cadastrados</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">15–30mil</span>
+      <span class="stat-label">meta de apoiadores cadastrados</span>
     </div>
   </div>
 </div>
@@ -715,12 +776,30 @@
 
 <!-- FOTO BAND 1 -->
 <div class="photo-band">
-  <img src="img/8.jpeg" alt="Zaqueu no Programa Engraxate Brasil"
+  <img src="img/13.jpeg" alt="Zaqueu no Programa Engraxate Brasil"
        onerror="this.style.display='none'" />
   <div class="photo-band-placeholder">
     <span>📸</span>Programa Engraxate Brasil
   </div>
 </div>
+
+<!-- VÍDEO ENGRAXATE BRASIL -->
+<section id="video-engraxate">
+  <div class="section-inner">
+    <span class="section-tag">Em ação</span>
+    <h2 class="section-title">Veja o projeto<br><span class="gold">Engraxate Brasil</span></h2>
+    <div class="divider-line"></div>
+    <p class="section-text">
+      Projeto aprovado no governo federal, com fomento do MDS e emenda parlamentar da <strong>Senadora Leila Barros</strong>. Trabalho, renda e dignidade para pessoas em situação de vulnerabilidade social.
+    </p>
+    <div class="video-wrap">
+      <video controls playsinline preload="metadata">
+        <source src="img/projetoMGI.mp4" type="video/mp4" />
+        Seu navegador não suporta vídeo HTML5.
+      </video>
+    </div>
+  </div>
+</section>
 
 <!-- REALIZAÇÕES -->
 <section id="realizacoes">
@@ -762,6 +841,34 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO LEILA BARROS -->
+<section id="leila">
+  <div class="section-inner">
+    <span class="section-tag">Aliança política</span>
+    <h2 class="section-title">Com <span class="gold">Leila Barros</span><br>pelo povo do DF</h2>
+    <div class="divider-line"></div>
+    <p class="section-text">
+      Zaqueu Braga conta com o apoio e a parceria da <strong>Senadora Leila Barros (PDT-DF)</strong> — Leila do Vôlei, uma das vozes mais respeitadas do Senado Federal e referência de política comprometida com o povo.
+    </p>
+
+    <div class="leila-destaque">
+      <p>
+        Foi a <strong>emenda parlamentar da Senadora Leila</strong> que viabilizou o <strong>Programa Engraxate Brasil</strong>, transformando a vida de mais de 120 profissionais em situação de vulnerabilidade social — provando que parceria de verdade se faz com resultado.
+      </p>
+    </div>
+
+    <p class="section-text" style="margin-top:20px;">
+      Do chão da CAIXA até o Senado, o compromisso com o povo do DF é o mesmo. Essa aliança une a força de base do Zaqueu com a voz legislativa da Leila — da rua ao Legislativo.
+    </p>
+
+    <div class="leila-foto-wrap">
+      <img src="img/leila.jpeg" alt="Zaqueu Braga e Senadora Leila Barros (PDT-DF)"
+           onerror="this.parentElement.style.display='none'" />
+      <p class="leila-caption">Zaqueu Braga e Senadora Leila Barros (PDT-DF) — juntos pelo Distrito Federal</p>
     </div>
   </div>
 </section>
@@ -842,10 +949,15 @@
         <span class="m-num">6</span>
         <span class="m-label">regiões do DF cobertas</span>
       </div>
-      <div class="meta-card">
+      <div class="meta-card destaque">
+        <span class="m-icon">🙋</span>
+        <span class="m-num">500</span>
+        <span class="m-label">meta de voluntários cadastrados</span>
+      </div>
+      <div class="meta-card destaque" style="grid-column: span 2;">
         <span class="m-icon">👥</span>
-        <span class="m-num">2.100</span>
-        <span class="m-label">apoiadores cadastrados</span>
+        <span class="m-num">15 a 30 mil</span>
+        <span class="m-label">meta de apoiadores cadastrados no DF</span>
       </div>
     </div>
 
@@ -863,27 +975,27 @@
   </div>
   <div class="fotos-scroll">
     <div class="foto-item">
-      <img src="img/WhatsApp%20Image%202026-03-15%20at%2016.00.38.jpeg" alt="Zaqueu Braga com autoridade"
+      <img src="img/WhatsApp%20Image%202026-03-15%20at%2016.00.35.jpeg" alt="Zaqueu Braga no Legisla Brasil"
            onerror="this.parentElement.querySelector('.foto-placeholder').style.display='flex'; this.style.display='none'" />
       <div class="foto-placeholder" style="display:none"><span>📸</span>Foto 1</div>
     </div>
     <div class="foto-item">
-      <img src="img/WhatsApp%20Image%202026-03-15%20at%2016.00.33.jpeg" alt="Zaqueu Braga no PDT"
+      <img src="img/11.jpeg" alt="Zaqueu Braga Mobilizador do 3º Setor"
            onerror="this.parentElement.querySelector('.foto-placeholder').style.display='flex'; this.style.display='none'" />
       <div class="foto-placeholder" style="display:none"><span>📸</span>Foto 2</div>
     </div>
     <div class="foto-item">
-      <img src="img/11.jpeg" alt="Zaqueu Braga Mobilizador do 3º Setor"
+      <img src="img/12.jpeg" alt="Zaqueu Braga em Brasília"
            onerror="this.parentElement.querySelector('.foto-placeholder').style.display='flex'; this.style.display='none'" />
       <div class="foto-placeholder" style="display:none"><span>📸</span>Foto 3</div>
     </div>
     <div class="foto-item">
-      <img src="img/12.jpeg" alt="Zaqueu Braga em Brasília"
+      <img src="img/10.jpeg" alt="Zaqueu Braga em evento"
            onerror="this.parentElement.querySelector('.foto-placeholder').style.display='flex'; this.style.display='none'" />
       <div class="foto-placeholder" style="display:none"><span>📸</span>Foto 4</div>
     </div>
     <div class="foto-item">
-      <img src="img/9.jpeg" alt="Assinatura do Programa Engraxate Brasil"
+      <img src="img/haddad.jpeg" alt="Zaqueu Braga"
            onerror="this.parentElement.querySelector('.foto-placeholder').style.display='flex'; this.style.display='none'" />
       <div class="foto-placeholder" style="display:none"><span>📸</span>Foto 5</div>
     </div>
@@ -905,20 +1017,20 @@
   </div>
 </section>
 
-<!-- VOTE -->
-<section id="vote">
-  <div class="vote-inner">
-    <p class="vote-label">Na urna, vote</p>
-    <div class="vote-num">12300</div>
-    <p class="vote-name">Zaqueu Braga</p>
-    <p class="vote-party">Deputado Distrital · PDT · DF 2026</p>
+<!-- 12.300 MOTIVOS PARA MUDAR -->
+<section id="motivos">
+  <div class="motivos-inner">
+    <p class="motivos-label">Uma candidatura de verdade</p>
+    <div class="motivos-num">12.300</div>
+    <p class="motivos-text">motivos para mudar.</p>
+    <p class="motivos-sub">Zaqueu Braga · Deputado Distrital · PDT · DF 2026</p>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <p class="footer-text">
-    Campanha Zaqueu Braga 12300 · PDT — Partido Democrático Trabalhista · Distrito Federal · 2026<br>
+    Campanha Zaqueu Braga · PDT — Partido Democrático Trabalhista · Distrito Federal · 2026<br>
     "A força do trabalho no Legislativo."
   </p>
   <a href="/" class="footer-back">← Voltar para a pesquisa</a>
