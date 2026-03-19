@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zaqueu Braga · Deputado Distrital DF 2026</title>
-  <meta name="description" content="A força do trabalho no Legislativo. Zaqueu Braga, candidato a Deputado Distrital pelo PDT no DF. 12.300 motivos para mudar." />
+  <meta name="description" content="A força do trabalho no Legislativo. Zaqueu Braga, candidato a Deputado Distrital pelo PDT no DF. Doze mil e trezentos motivos para mudar." />
   <meta name="theme-color" content="#C8102E" />
 
   <!-- Open Graph -->
@@ -128,11 +128,18 @@
     .hero-name .gold { color: var(--gold); }
     .hero-motivos {
       font-size: clamp(1rem, 3.5vw, 1.2rem);
-      font-weight: 800;
-      color: var(--gold);
+      font-weight: 700;
+      color: var(--text-muted);
       letter-spacing: 0.01em;
       margin-bottom: 16px;
-      line-height: 1.3;
+      line-height: 1.5;
+    }
+    .hero-motivos em {
+      font-style: normal;
+      font-weight: 900;
+      color: var(--gold);
+      font-size: 1.15em;
+      letter-spacing: -0.01em;
     }
     .hero-slogan {
       font-size: clamp(1rem, 3.5vw, 1.25rem);
@@ -215,8 +222,13 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: center 15%; /* mobile: rosto centralizado */
       display: block;
+    }
+    @media (min-width: 768px) {
+      .hero-photo-wrap img {
+        object-position: center 20%; /* desktop: mais espaço abaixo, rosto visível */
+      }
     }
     .hero-overlay {
       position: absolute;
@@ -341,6 +353,22 @@
       background: linear-gradient(135deg, var(--card), var(--card2));
       color: var(--text-muted);
       font-size: 0.85rem;
+    }
+
+    /* ===== REPORTAGEM BAND ===== */
+    .reportagem-band {
+      background: #000;
+      width: 100%;
+    }
+    .rep-label {
+      padding: 10px 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
     }
 
     /* ===== VÍDEO ===== */
@@ -604,7 +632,7 @@
     }
     .btn-instagram:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(131,58,180,0.5); }
 
-    /* ===== 12.300 MOTIVOS ===== */
+    /* ===== DOZE MIL E TREZENTOS MOTIVOS ===== */
     #motivos {
       background: var(--red);
       padding: 56px 20px;
@@ -620,19 +648,25 @@
       margin-bottom: 8px;
     }
     .motivos-num {
-      font-size: clamp(4rem, 18vw, 7rem);
+      font-size: clamp(2.8rem, 12vw, 5.5rem);
       font-weight: 900;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.03em;
       color: white;
-      line-height: 1;
+      line-height: 1.05;
       text-shadow: 0 4px 24px rgba(0,0,0,0.3);
       margin-bottom: 4px;
+      font-style: italic;
+    }
+    .motivos-num .mot-gold {
+      color: var(--gold);
+      font-size: 0.88em;
+      display: block;
     }
     .motivos-text {
       font-size: clamp(1.2rem, 4vw, 1.6rem);
       font-weight: 900;
-      color: var(--gold);
-      letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: -0.01em;
       margin-bottom: 12px;
     }
     .motivos-sub {
@@ -688,7 +722,7 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-photo-wrap">
-    <img src="img/7.jpeg" alt="Zaqueu Braga"
+    <img src="img/inicio.png" alt="Zaqueu Braga"
          onerror="this.parentElement.style.display='none'" />
     <div class="hero-overlay"></div>
   </div>
@@ -698,7 +732,7 @@
   <div class="hero-content">
     <span class="hero-badge">🗳️ Deputado Distrital · PDT · DF 2026</span>
     <h1 class="hero-name">Zaqueu<br><span class="gold">Braga</span></h1>
-    <p class="hero-motivos">12.300 motivos para mudar.</p>
+    <p class="hero-motivos"><em>doze mil e trezentos</em> motivos para mudar.</p>
     <p class="hero-slogan"><strong>"A força do trabalho</strong><br>no Legislativo."</p>
     <div class="hero-ctas">
       <a href="https://www.instagram.com/zaqueudistrital" target="_blank" rel="noopener"
@@ -774,12 +808,14 @@
   </div>
 </section>
 
-<!-- FOTO BAND 1 -->
-<div class="photo-band">
-  <img src="img/13.jpeg" alt="Zaqueu no Programa Engraxate Brasil"
-       onerror="this.style.display='none'" />
-  <div class="photo-band-placeholder">
-    <span>📸</span>Programa Engraxate Brasil
+<!-- REPORTAGEM GLOBO -->
+<div class="reportagem-band">
+  <div class="rep-label">📺 Reportagem · TV Globo · Programa Engraxate Brasil</div>
+  <div class="video-wrap" style="border-radius:0; box-shadow:none; margin-top:0;">
+    <video controls playsinline preload="metadata">
+      <source src="img/reportagem_globo.mp4" type="video/mp4" />
+      Seu navegador não suporta vídeo HTML5.
+    </video>
   </div>
 </div>
 
@@ -1017,11 +1053,11 @@
   </div>
 </section>
 
-<!-- 12.300 MOTIVOS PARA MUDAR -->
+<!-- DOZE MIL E TREZENTOS MOTIVOS PARA MUDAR -->
 <section id="motivos">
   <div class="motivos-inner">
     <p class="motivos-label">Uma candidatura de verdade</p>
-    <div class="motivos-num">12.300</div>
+    <div class="motivos-num">doze mil<span class="mot-gold">e trezentos</span></div>
     <p class="motivos-text">motivos para mudar.</p>
     <p class="motivos-sub">Zaqueu Braga · Deputado Distrital · PDT · DF 2026</p>
   </div>
