@@ -247,12 +247,26 @@
       padding: 40px 20px;
     }
     .stats-inner {
-      max-width: 640px;
+      max-width: 760px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-      gap: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
       text-align: center;
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .stats-row-label {
+      font-size: 0.55rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      margin-bottom: 4px;
     }
     .stat-item { display: flex; flex-direction: column; align-items: center; }
     .stat-tag {
@@ -764,30 +778,45 @@
 <!-- STATS -->
 <div id="stats">
   <div class="stats-inner">
-    <div class="stat-item">
-      <span class="stat-tag stat-tag-real">✓ Realizado</span>
-      <span class="stat-num">25</span>
-      <span class="stat-label">anos como engraxate na CAIXA</span>
+    <div>
+      <div class="stats-row-label">✓ Realizado</div>
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-tag stat-tag-real">✓ Realizado</span>
+          <span class="stat-num">25</span>
+          <span class="stat-label">anos como engraxate na CAIXA</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-tag stat-tag-real">✓ Realizado</span>
+          <span class="stat-num">120+</span>
+          <span class="stat-label">profissionais formados</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-tag stat-tag-real">✓ Realizado</span>
+          <span class="stat-num">16mil</span>
+          <span class="stat-label">brinquedos distribuídos</span>
+        </div>
+      </div>
     </div>
-    <div class="stat-item">
-      <span class="stat-tag stat-tag-real">✓ Realizado</span>
-      <span class="stat-num">120+</span>
-      <span class="stat-label">profissionais formados</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-tag stat-tag-real">✓ Realizado</span>
-      <span class="stat-num">16mil</span>
-      <span class="stat-label">brinquedos distribuídos</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-tag stat-tag-meta">→ Meta</span>
-      <span class="stat-num">500</span>
-      <span class="stat-label">voluntários cadastrados</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-tag stat-tag-meta">→ Meta</span>
-      <span class="stat-num">15–30mil</span>
-      <span class="stat-label">apoiadores cadastrados no DF</span>
+    <div>
+      <div class="stats-row-label">→ Metas</div>
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-tag stat-tag-meta">→ Meta</span>
+          <span class="stat-num">500</span>
+          <span class="stat-label">voluntários cadastrados</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-tag stat-tag-meta">→ Meta</span>
+          <span class="stat-num">15–30mil</span>
+          <span class="stat-label">apoiadores cadastrados no DF</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-tag stat-tag-meta">→ Meta</span>
+          <span class="stat-num">250</span>
+          <span class="stat-label">vídeos produzidos</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -936,40 +965,43 @@
 <section id="campanha-limpa">
   <div class="section-inner">
     <span class="section-tag">O diferencial</span>
-    <h2 class="section-title">Campanha limpa<br>é <span class="gold">economia, inovação</span><br>e sustentabilidade.</h2>
+    <h2 class="section-title">Sustentabilidade.<br>Panfleto não.<br><span class="gold">Pesquisa, vídeo</span><br>e presença real.</h2>
     <div class="divider-line"></div>
 
     <div class="manifesto">
       <p class="manifesto-quote">
-        "Essa não é uma candidatura que nasce do gabinete, mas uma que chega ao gabinete pela rua."
+        "A gente muda a base de fazer campanha — das ruas sujas para as redes e para o diálogo direto com o povo."
       </p>
       <p class="manifesto-author">— Zaqueu Braga, 2026</p>
     </div>
 
     <p class="section-text">
-      A proposta da campanha é clara: <strong>zero poluição visual.</strong> Enquanto outros candidatos sujam a cidade com milhares de panfletos e cartazes, Zaqueu demonstra na prática o que defende — uma política mais limpa, mais honesta e mais sustentável.
+      A proposta é simples: <strong>substituir a panfletagem por presença real.</strong> Nossa campanha acontece na aplicação e promoção da pesquisa nas ruas, na produção de vídeos para as redes sociais e nos encontros com a população — sem sujar a cidade com papel que ninguém lê.
+    </p>
+    <p class="section-text" style="margin-top:12px;">
+      Além disso, vamos disponibilizar um <strong>termo de compromisso</strong> para as demais campanhas que quiserem aderir ao formato sustentável — e publicar o <strong>ranking dos sujões</strong>, denunciando as campanhas que mais poluem o DF.
     </p>
 
     <div class="pillars">
       <div class="pillar">
-        <span class="p-icon">♻️</span>
-        <div class="p-title">Sem poluição visual</div>
-        <div class="p-text">Campanha 100% digital e presencial, sem sujar as ruas do DF.</div>
+        <span class="p-icon">🧹</span>
+        <div class="p-title">Provar que é possível</div>
+        <div class="p-text">Mostrar na prática que dá para fazer campanha competitiva sem sujar a cidade.</div>
       </div>
       <div class="pillar">
-        <span class="p-icon">📱</span>
-        <div class="p-title">Digital orgânico</div>
-        <div class="p-text">TikTok, Instagram e Kwai. Humor e cotidiano como ponte para a política.</div>
+        <span class="p-icon">📣</span>
+        <div class="p-title">Conscientização nas ruas</div>
+        <div class="p-text">Se o eleitor não votar em quem suja, os candidatos param de poluir. A mudança começa no voto.</div>
       </div>
       <div class="pillar">
-        <span class="p-icon">🤝</span>
-        <div class="p-title">Mutirões</div>
-        <div class="p-text">12 mutirões comunitários em 6 regiões do DF.</div>
+        <span class="p-icon">📝</span>
+        <div class="p-title">Termo de compromisso</div>
+        <div class="p-text">Disponível para qualquer campanha que queira aderir ao modelo sustentável de fazer política.</div>
       </div>
       <div class="pillar">
-        <span class="p-icon">🍽️</span>
-        <div class="p-title">Almoços temáticos</div>
-        <div class="p-text">Política feita olho no olho com garis, professoras, catadores e mais.</div>
+        <span class="p-icon">🚨</span>
+        <div class="p-title">Ranking dos sujões</div>
+        <div class="p-text">Denúncia e divulgação das campanhas que mais poluem as ruas e o espaço público do DF.</div>
       </div>
     </div>
   </div>
@@ -985,8 +1017,8 @@
     <div class="metas-grid">
       <div class="meta-card">
         <span class="m-icon">🎬</span>
-        <span class="m-num">180</span>
-        <span class="m-label">vídeos produzidos (3/dia)</span>
+        <span class="m-num">250</span>
+        <span class="m-label">vídeos produzidos</span>
       </div>
       <div class="meta-card">
         <span class="m-icon">🧹</span>
