@@ -197,6 +197,32 @@
       box-shadow: 0 12px 40px rgba(200,16,46,0.55);
     }
     .btn-start::after { content: '→'; font-size: 1.1em; }
+    .intro-secondary {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.15);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.35);
+      color: var(--white);
+    }
     .intro-decoration {
       position: absolute;
       bottom: 120px;
@@ -667,6 +693,10 @@
       <div class="divider"></div>
       <p class="intro-subtitle">Campanha limpa é economia, sustentabilidade e inovação. Leva menos de 2 minutos.</p>
       <button class="btn-start" onclick="goToScreen(1)">Iniciar pesquisa</button>
+      <div class="intro-secondary">
+        <a href="https://www.instagram.com/zaqueudistrital" target="_blank" rel="noopener" class="btn-ghost">📸 Seguir no Instagram</a>
+        <a href="campanha.html" class="btn-ghost">👤 Conheça a campanha</a>
+      </div>
     </div>
     <div class="intro-decoration">
       <span></span><span></span><span></span>
