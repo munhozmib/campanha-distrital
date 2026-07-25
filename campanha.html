@@ -879,6 +879,30 @@
     .form-msg.error { color: #f87171; display: block; }
     .contact-form .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none !important; }
 
+    /* ===== MÚSICA DE FUNDO ===== */
+    #music-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 200;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(13,13,20,0.85);
+      color: var(--white);
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #music-toggle:hover { transform: scale(1.08); }
+
     /* ===== RESPONSIVE ===== */
     @media (min-width: 480px) {
       .realizacoes-grid { grid-template-columns: 1fr; }
@@ -891,6 +915,10 @@
 </head>
 <body>
 
+<!-- MÚSICA DE FUNDO -->
+<audio id="bg-music" src="img/trilha-fundo.mp3" loop preload="auto"></audio>
+<button id="music-toggle" type="button" aria-label="Ativar ou pausar música de fundo" title="Música de fundo">🔈</button>
+
 <!-- HEADER -->
 <header id="header">
   <div class="header-logo">Zaqueu <span>Braga</span></div>
@@ -900,7 +928,7 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-photo-wrap">
-    <img src="img/inicio.png" alt="Zaqueu Braga"
+    <img src="img/IMG-20260507-WA0147%20(1).jpg" alt="Zaqueu Braga"
          onerror="this.parentElement.style.display='none'" />
     <div class="hero-overlay"></div>
   </div>
@@ -1453,6 +1481,38 @@ async function submitContactForm(event) {
     btn.textContent = 'Enviar mensagem';
   }
 }
+
+// ===== MÚSICA DE FUNDO =====
+(function () {
+  const audio = document.getElementById('bg-music');
+  const toggle = document.getElementById('music-toggle');
+  if (!audio || !toggle) return;
+
+  audio.volume = 0.45;
+
+  function updateIcon() {
+    toggle.textContent = audio.paused ? '🔈' : '🔊';
+  }
+
+  // Tenta iniciar sozinho; navegadores que bloqueiam autoplay com som
+  // deixam o botão pronto para o visitante ligar manualmente.
+  const playPromise = audio.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {});
+  }
+
+  toggle.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  });
+
+  audio.addEventListener('play', updateIcon);
+  audio.addEventListener('pause', updateIcon);
+  updateIcon();
+})();
 </script>
 
 </body>
