@@ -190,6 +190,21 @@
       cursor: pointer;
     }
     .btn-secondary:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.3); }
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #1a1400;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 14px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(255,184,28,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,184,28,0.5); }
     .hero-scroll {
       position: absolute;
       bottom: 20px;
@@ -665,6 +680,56 @@
     }
     .btn-instagram:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(131,58,180,0.5); }
 
+    /* ===== VAQUINHA CTA ===== */
+    #vaquinha {
+      background: linear-gradient(135deg, #2a1d00, #0d0d14);
+      padding: 64px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #vaquinha::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,184,28,0.2) 0%, transparent 70%);
+    }
+    .vaq-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .vaq-icon { font-size: 3rem; display: block; margin-bottom: 16px; }
+    .vaq-title {
+      font-size: clamp(1.4rem, 5vw, 1.8rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .vaq-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .btn-vaquinha {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #1a1400;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 16px 32px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 8px 28px rgba(255,184,28,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .btn-vaquinha:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(255,184,28,0.5); }
+
     /* ===== DOZE MIL E TREZENTOS MOTIVOS ===== */
     #motivos {
       background: var(--red);
@@ -851,6 +916,8 @@
          class="btn-primary">📸 Seguir no Instagram</a>
       <a href="/" class="btn-secondary">📊 Responder pesquisa</a>
       <a href="#fala-com-candidato" class="btn-secondary">💬 Fale com o candidato</a>
+      <a href="https://euapoio.vc/zaqueuengraxate" target="_blank" rel="noopener"
+         class="btn-gold">💛 Apoie a vaquinha</a>
     </div>
   </div>
   <div class="hero-scroll">Role</div>
@@ -1294,6 +1361,21 @@
       <button type="submit" class="btn-primary" id="contact-submit">Enviar mensagem</button>
       <p class="form-msg" id="contact-msg"></p>
     </form>
+  </div>
+</section>
+
+<!-- VAQUINHA CTA -->
+<section id="vaquinha">
+  <div class="vaq-inner">
+    <span class="vaq-icon">💛</span>
+    <h2 class="vaq-title">Apoie a campanha</h2>
+    <p class="vaq-sub">
+      Uma campanha sem sujar a cidade é uma campanha que depende de você. Contribua com a vaquinha e ajude a levar essa proposta adiante.
+    </p>
+    <a href="https://euapoio.vc/zaqueuengraxate" target="_blank" rel="noopener"
+       class="btn-vaquinha">
+      💛 Contribuir com a vaquinha
+    </a>
   </div>
 </section>
 
