@@ -1,5 +1,5 @@
 // Netlify Function: save-contact-message
-// Saves a "Fale com o pré-candidato" message to Supabase via REST API.
+// Saves a "Fale com o candidato" message to Supabase via REST API.
 // Required environment variables (set in Netlify dashboard):
 //   SUPABASE_URL       — e.g. https://xyzxyz.supabase.co
 //   SUPABASE_ANON_KEY  — your project's anon/public key

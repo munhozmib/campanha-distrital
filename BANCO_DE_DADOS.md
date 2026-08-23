@@ -77,7 +77,7 @@ Ou via SQL:
 SELECT * FROM responses ORDER BY created_at DESC;
 ```
 
-## Tabela `contact_messages` — "Fale com o pré-candidato"
+## Tabela `contact_messages` — "Fale com o candidato"
 
 Recurso na página da campanha (`campanha.html`) onde qualquer visitante pode enviar
 nome, contato e uma mensagem (sugestão, necessidade coletiva ou apoio) diretamente
